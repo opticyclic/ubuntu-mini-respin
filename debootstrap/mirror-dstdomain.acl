@@ -1,0 +1,28 @@
+# network destinations that are allowed by this cache
+
+# default ubuntu and ubuntu country archive mirrors
+.archive.ubuntu.com 
+ports.ubuntu.com 
+security.ubuntu.com
+ddebs.ubuntu.com
+mirrors.ubuntu.com
+
+#official third party repositories
+.archive.canonical.com
+.extras.ubuntu.com
+
+# default changelogs location, this includes changelogs and the meta-release
+# file that has information about new ubuntu versions
+changelogs.ubuntu.com
+
+# launchpad personal package archives (disabled by default)
+#ppa.launchpad.net
+#private-ppa.launchpad.net
+
+# add additional mirror domains here (disabled by default)
+#linux.dropbox.com
+#download.virtualbox.org
+#archive.getdeb.net
+#packages.medibuntu.org
+#dl.google.com
+#repo.steampowered.com
