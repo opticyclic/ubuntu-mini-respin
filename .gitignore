@@ -1,2 +1,5 @@
 #Chroot and ISO output
 build
+
+#Squid caching proxy
+squid/var/
