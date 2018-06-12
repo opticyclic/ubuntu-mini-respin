@@ -18,8 +18,7 @@ echo "Chroot dir = ${chroot_dir}"
 mkdir -p "${chroot_dir}"
 cd "${work_dir}"
 
-sudo debootstrap --verbose --arch=${ARCH} ${RELEASE} ${chroot_dir}
-if [ "$?" -ne "0" ]; then
+if ! sudo debootstrap --verbose --arch=${ARCH} ${RELEASE} ${chroot_dir}; then
   echo "debootstrap failed."
   echo "See ${chroot_dir}/debootstrap/debootstrap.log for more information."
   exit 1
