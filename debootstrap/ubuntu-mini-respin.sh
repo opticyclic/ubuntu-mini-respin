@@ -26,7 +26,7 @@ cd "${work_dir}"
 #Use a caching proxy to save bandwidth
 export http_proxy=http://127.0.0.1:8000
 
-if ! sudo debootstrap --verbose --arch=${ARCH} --components=main,restricted,universe ${RELEASE} ${chroot_dir}; then
+if ! sudo debootstrap --verbose --arch=${ARCH} --components=main,restricted,universe --variant=minbase ${RELEASE} ${chroot_dir}; then
   echo "debootstrap failed."
   echo "See ${chroot_dir}/debootstrap/debootstrap.log for more information."
   exit 1
