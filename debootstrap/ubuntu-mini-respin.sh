@@ -28,3 +28,15 @@ if ! sudo debootstrap --verbose --arch=${ARCH} ${RELEASE} ${chroot_dir}; then
 fi
 
 echo "debootstrap succeeded"
+
+#Mount the /proc filesystem in the chroot (otherwise you can't run processes in it)
+sudo mount -o bind /proc "${chroot_dir}/proc"
+
+#Mount /dev in the chroot so that grub-probe can succeed
+sudo mount -o bind /dev "${chroot_dir}/dev"
+
+echo "Removing host mounts from chroot"
+sudo umount "${chroot_dir}/proc"
+sudo umount "${chroot_dir}/dev"
+
+echo "Finished"
