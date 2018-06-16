@@ -43,6 +43,41 @@ sudo mount -o bind /dev "${chroot_dir}/dev"
 #Copy the host DNS details to enable internet access within the chroot
 sudo cp /etc/resolv.conf ${chroot_dir}/etc/resolv.conf
 
+echo "Create an install script to run in the chroot"
+CHROOT_SCRIPT=/tmp/chroot_script.sh
+cat > $CHROOT_SCRIPT <<EOF
+#!/bin/bash
+
+#Install packages needed for Live System
+apt-get update
+locale-gen "en_US.UTF-8"
+dpkg-reconfigure --frontend=noninteractive locales
+
+echo "Installing ubuntu base"
+apt-get install --yes ubuntu-standard
+
+#https://answers.launchpad.net/ubuntu-mini-remix/+faq/33
+echo "Installing live packages"
+apt-get install --yes casper lupin-casper discover laptop-detect os-prober
+
+#Add Ubiquity front end
+echo "Installing ubiquity"
+apt-get install --yes ubiquity-frontend-gtk
+
+echo "Cleanup the chroot"
+apt-get clean
+rm /var/lib/dbus/machine-id
+rm -rf /tmp/*
+rm /etc/resolv.conf
+
+EOF
+
+chmod +x $CHROOT_SCRIPT
+sudo mv $CHROOT_SCRIPT ${chroot_dir}/tmp/
+
+echo "Run the install script in chroot"
+sudo chroot ${chroot_dir} $CHROOT_SCRIPT
+
 echo "Removing host mounts from chroot"
 sudo umount "${chroot_dir}/proc"
 sudo umount "${chroot_dir}/dev"
