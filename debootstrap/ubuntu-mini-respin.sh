@@ -40,6 +40,9 @@ sudo mount -o bind /proc "${chroot_dir}/proc"
 #Mount /dev in the chroot so that grub-probe can succeed
 sudo mount -o bind /dev "${chroot_dir}/dev"
 
+#Copy the host DNS details to enable internet access within the chroot
+sudo cp /etc/resolv.conf ${chroot_dir}/etc/resolv.conf
+
 echo "Removing host mounts from chroot"
 sudo umount "${chroot_dir}/proc"
 sudo umount "${chroot_dir}/dev"
