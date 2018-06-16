@@ -13,6 +13,11 @@ script_dir="$(dirname $(readlink -f "$0"))"
 work_dir="${script_dir}/build"
 chroot_dir="${work_dir}/${RELEASE}"
 
+echo "Clean chroot from any previous runs"
+sudo umount "${chroot_dir}/proc" || true
+sudo umount "${chroot_dir}/dev" || true
+sudo rm -rf "${work_dir}"
+
 #Make chroot
 echo "Chroot dir = ${chroot_dir}"
 mkdir -p "${chroot_dir}"
