@@ -6,6 +6,7 @@
 
 #Chroot and ISO output
 build
+squashfs-root
 
 #Squid caching proxy
 squid/var/
