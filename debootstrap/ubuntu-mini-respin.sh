@@ -20,6 +20,7 @@ chroot_dir="${work_dir}/${RELEASE}"
 log "Clean chroot from any previous runs"
 sudo umount "${chroot_dir}/proc" || true
 sudo umount "${chroot_dir}/dev" || true
+sudo umount "${chroot_dir}/sys" || true
 sudo rm -rf "${work_dir}"
 
 #Make chroot
@@ -43,6 +44,9 @@ sudo mount -o bind /proc "${chroot_dir}/proc"
 
 #Mount /dev in the chroot so that grub-probe can succeed
 sudo mount -o bind /dev "${chroot_dir}/dev"
+
+#Mount /sys in the chroot so that partitions can be listed for grub
+sudo mount -o bind /sys "${chroot_dir}/sys"
 
 #Copy the host DNS details to enable internet access within the chroot
 sudo cp /etc/resolv.conf ${chroot_dir}/etc/resolv.conf
@@ -89,5 +93,6 @@ sudo chroot ${chroot_dir} $CHROOT_SCRIPT
 log "Removing host mounts from chroot"
 sudo umount "${chroot_dir}/proc"
 sudo umount "${chroot_dir}/dev"
+sudo umount "${chroot_dir}/sys"
 
 log "Finished"
