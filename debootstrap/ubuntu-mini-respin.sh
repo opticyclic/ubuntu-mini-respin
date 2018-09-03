@@ -68,6 +68,9 @@ dpkg-reconfigure --frontend=noninteractive locales
 log "Installing ubuntu base"
 apt-get install --yes ubuntu-standard
 
+log "Installing kernel"
+apt-get install --yes linux-generic
+
 #https://answers.launchpad.net/ubuntu-mini-remix/+faq/33
 log "Installing live packages"
 apt-get install --yes casper lupin-casper discover laptop-detect os-prober
