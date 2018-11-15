@@ -57,7 +57,7 @@ cat > $CHROOT_SCRIPT <<EOF
 #!/bin/bash
 
 function log() {
-    echo "#### $1"
+    echo "#### \$1"
 }
 
 #Install packages needed for Live System
