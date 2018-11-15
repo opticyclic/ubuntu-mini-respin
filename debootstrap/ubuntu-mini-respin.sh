@@ -69,7 +69,7 @@ log "Installing ubuntu base"
 apt-get install --yes ubuntu-standard
 
 log "Installing kernel"
-apt-get install --yes linux-generic
+DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install linux-generic
 
 #https://answers.launchpad.net/ubuntu-mini-remix/+faq/33
 log "Installing live packages"
@@ -77,7 +77,7 @@ apt-get install --yes casper lupin-casper discover laptop-detect os-prober
 
 #Add Ubiquity front end
 log "Installing ubiquity"
-apt-get install --yes ubiquity-frontend-gtk
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" ubiquity-frontend-gtk
 
 log "Cleanup the chroot"
 apt-get clean
