@@ -46,6 +46,12 @@ These outputs are checked in to make it easy to see what the differences are wit
 
 ## Instructions
 
+There are two sub-directories with different ways of creating the ISO.
+
+The first uses `debootstrap` and does all the work from scratch in a similar way to the [wiki](https://help.ubuntu.com/community/LiveCDCustomizationFromScratch).
+
+The second one uses `ubuntu-defaults-builder` in the same way that the original Ubuntu Mini Remix was created.
+
 Since you are likely to want to run this multiple times, the script makes use of `squid` as a proxy to cache the deb files and the repository Release files. 
 This is more reliable for offline work than `apt-cacherng` as squid can cache more than just the deb files.
 
