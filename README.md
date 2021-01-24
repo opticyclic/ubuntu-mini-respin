@@ -1,7 +1,10 @@
 # Ubuntu-Mini-Respin
 
 This is an attempt to recreate Minibuntu/Ubuntu Mini Remix.
-https://fabrizioballiano.net/ubuntu-mini-remix/
+
+Ubuntu Mini Remix (previously Miniubuntu) was a fully working Ubuntu LiveCD containing only the minimal set of software to make the system work. It was under development between 2010 and 2017 by [Fabrizio Balliano](https://github.com/fballiano). The ISO image was about 200 MB in size.
+
+It enabled you to build your own Ubuntu based LiveCD using Ubuntu Customization Kit, Reconstructor or any other tool to remaster the ISO and add the software/configurations you wanted, building your own Ubuntu based LiveCD.
 
 The script creates an Ubuntu ISO with as few dependencies as possible to be used as a base for respins.
 
